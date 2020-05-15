@@ -1,1 +1,29 @@
+dist: xenial
+sudo: required
 language: c
+
+cache:
+    directories:
+        - $HOME/prereq
+        - $HOME/local
+
+jobs:
+    include:
+        - name: "Build"
+          script:
+            - bash ci/install-packages.sh
+            - bash ci/setup-prereq-ext.sh
+            - bash ci/setup-prereq.sh
+            - bash ci/setup-weave.sh
+            - bash ci/unit-tests.sh
+            - bash ci/clang-tidy.sh
+
+        - name: "Many Ops"
+          script:
+            - bash ci/install-packages.sh
+            - bash ci/multi_op.sh
+
+        - name: "Relays"
+          script:
+            - bash ci/install-packages.sh
+            - bash ci/relay.s

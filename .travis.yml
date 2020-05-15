@@ -22,6 +22,6 @@ script:
 
   - echo "Reached Script Section"
 
-  - gcc   	Linkfile_multifile/demofile2.c Linkfile_multifile/file1.c  	Linkfile_multifile/file2.c -o output
+  - gcc   	Linkfile_multifile/Test.c -o output
 
   - ./output
